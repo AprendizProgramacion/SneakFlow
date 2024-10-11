@@ -39,29 +39,6 @@ function initializeFilter() {
     });
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-    var selected = document.querySelector('.select-selected');
-    var items = document.querySelector('.select-items');
-    
-    selected.addEventListener('click', function() {
-        items.classList.toggle('select-hide');
-    });
-    
-    items.addEventListener('click', function(e) {
-        var value = e.target.getAttribute('data-value');
-        selected.textContent = e.target.textContent;
-        items.classList.add('select-hide');
-        
-        // Actualiza la URL con el filtro seleccionado
-        updateFilter('color', value);
-    });
-    
-    document.addEventListener('click', function(e) {
-        if (!e.target.matches('.select-selected')) {
-            items.classList.add('select-hide');
-        }
-    });
-});
 
 function updateFilter(name, value) {
     const url = new URL(window.location.href);
@@ -97,28 +74,34 @@ document.addEventListener('DOMContentLoaded', function () {
         sliderRange.style.width = `${maxPercent - minPercent}%`;
     }
 
-    priceSelect.addEventListener('change', function () {
-        if (priceSelect.value === 'custom') {
-            filterContent.style.display = 'block';
-            updateSlider();
+    document.addEventListener('DOMContentLoaded', function () {
+        const priceSelect = document.querySelector('#priceSelect'); // Ajusta el selector según el elemento
+        const filterContent = document.querySelector('.filter-content'); // Ajusta según tu clase o id
+        const minPriceInput = document.querySelector('#minPriceInput'); // Ajusta el selector según el elemento
+        const maxPriceInput = document.querySelector('#maxPriceInput'); // Ajusta el selector según el elemento
+    
+        // Verifica si los elementos existen
+        if (priceSelect && filterContent && minPriceInput && maxPriceInput) {
+            priceSelect.addEventListener('change', function () {
+                if (priceSelect.value === 'custom') {
+                    filterContent.style.display = 'block';
+                    updateSlider();
+                } else {
+                    filterContent.style.display = 'none';
+                    // Resetear los valores del slider si es necesario
+                    minPriceInput.value = 50000;
+                    maxPriceInput.value = 500000;
+                    updateSlider();
+                }
+            });
         } else {
-            filterContent.style.display = 'none';
-            // Reset the slider values if needed
-            minPriceInput.value = 50000;
-            maxPriceInput.value = 500000;
-            updateSlider();
+            console.error('Uno o más elementos no encontrados. Verifica los selectores y la estructura del DOM.');
         }
     });
+    
 
     minPriceInput.addEventListener('input', updateSlider);
     maxPriceInput.addEventListener('input', updateSlider);
-
-    // Close the filter content if user clicks outside
-    document.addEventListener('click', function (event) {
-        if (!filterContent.contains(event.target) && event.target !== priceSelect) {
-            filterContent.style.display = 'none';
-        }
-    });
 
     // Initialize the slider position on page load
     updateSlider();
@@ -182,4 +165,23 @@ document.querySelectorAll('.size-table-table .selectable').forEach(cell => {
         this.classList.add('selected');
     });
 });
+
+function selectTalla(element, productoId) {
+    var tallaId = element.getAttribute('data-talla-id');
+    var cantidad = element.getAttribute('data-cantidad');
+    var displayElement = document.getElementById('selected-talla-display-' + productoId);
+    var tallaInput = document.getElementById('talla-' + productoId);
+    var cantidadInput = document.getElementById('cantidad-' + productoId);
+
+    // Actualiza el display y el input con el ID de la talla seleccionada
+    displayElement.textContent = element.textContent; // Mostrar solo el nombre de la talla
+    tallaInput.value = tallaId;
+    cantidadInput.setAttribute('max', cantidad); // Establece el valor máximo
+
+    //  Marca la talla seleccionada como activa
+    var tallaRows = document.querySelectorAll('[data-target="p-' + productoId + '"] .talla-row');
+    tallaRows.forEach(row => row.classList.remove('bg-blue-100', 'text-blue-500'));
+    element.classList.add('bg-blue-100', 'text-blue-500');
+}
+   
 

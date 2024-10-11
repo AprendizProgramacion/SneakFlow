@@ -15,7 +15,7 @@
 
         // Método para mostrar la página de recuperación de contraseña
         public function recuperarContrasena() {
-            include '../public/vistas/autentificacion/recuperar.php'; // Ruta ajustada
+            include '../public/vistas/autentificacion/Recuperar_Contrasena.php'; // Ruta ajustada
         }
 
         // Método para mostrar la página para crear nueva contraseña
@@ -27,9 +27,17 @@
             include '../public/vistas/carrito/Carrito.php';
         }
 
-        public function admin() {
-            include '../public/vistas_admin/admin.php';
+        public function promociones() {
+            include '../public/vistas/promo/Promociones.php';
+
         }
+
+
+        public function admin() {
+            include '../public/vistas_admin/Panel_Control.php';
+        }
+
+      
 
     }
     ?>

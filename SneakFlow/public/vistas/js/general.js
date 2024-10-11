@@ -28,3 +28,34 @@ function hideDropdown() {
 const marcasDropdown = document.getElementById('marcasDropdown');
 marcasDropdown.addEventListener('mouseover', showDropdown);
 marcasDropdown.addEventListener('mouseout', hideDropdown);
+
+function updateCartCount(count) {
+    const cartCountElement = document.getElementById('cart-count');
+    
+    if (count > 0) {
+        cartCountElement.textContent = count;
+        cartCountElement.classList.add('show'); // Muestra el contador
+    } else {
+        cartCountElement.textContent = '';
+        cartCountElement.classList.remove('show'); // Oculta el contador
+    }
+}
+
+function toggleMenu() {
+    const navbar = document.getElementById('navbar');
+    navbar.classList.toggle('hidden');
+}
+
+function toggleProfileMenu(event) {
+    event.stopPropagation();
+    const dropdown = document.getElementById('profileDropdown');
+    dropdown.classList.toggle('hidden');
+}
+
+document.addEventListener('click', function() {
+    const dropdown = document.getElementById('profileDropdown');
+    if (!dropdown.classList.contains('hidden')) {
+        dropdown.classList.add('hidden');
+    }
+});
+

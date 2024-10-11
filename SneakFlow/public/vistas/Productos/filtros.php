@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
@@ -19,21 +17,28 @@
         }
 
         .filter-item.open .filter-content ul {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-            gap: 10px;
-            padding: 0;
-            list-style: none;
-            margin: 0;
-        }
+                display: grid;
+                grid-template-columns: repeat(2, 1fr); /* 4 columnas */
+                gap: 10px;
+                padding: 0;
+                list-style: none;
+                margin: 0;
+                align-items: start; /* Alinea los ítems al inicio de la fila */
+            }
 
-        .filter-item.open .filter-content ul li {
-            display: flex;
-            padding: 8px;
-            background-color: #f9f9f9;
-            border-radius: 4px;
-            transition: background-color 0.2s ease-in-out;
-        }
+            .filter-item.open .filter-content ul li {
+                display: flex;
+                align-items: center; /* Centra el contenido verticalmente */
+                justify-content: flex-start;
+                padding: 8px;
+                background-color: #f9f9f9;
+                border-radius: 4px;
+                transition: background-color 0.2s ease-in-out;
+                min-height: 40px; /* Define una altura mínima uniforme para los ítems */
+                box-sizing: border-box; /* Incluye padding y borde en el cálculo de la altura */
+                margin: 0; /* Asegúrate de que no haya margen adicional */
+            }
+
         
         .filter-item.open .filter-content ul li:hover {
             background-color: #f0f0f0;
@@ -91,61 +96,43 @@
 
         /* Estilos personalizados para el filtro de botones */
         .filter-btn {
-            background: linear-gradient(135deg, #6b73ff 0%, #000dff 100%);
-            color: white;
+            background: transparent; /* Fondo transparente */
+            color: black; /* Texto negro */
             text-align: center;
             border: none;
             padding: 10px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.2s, box-shadow 0.2s;
+            border-bottom: 2px solid #ddd; /* Borde inferior sutil */
+            border-radius: 0; /* Sin bordes redondeados */
+            box-shadow: none; /* Sin sombra */
+            transition: background-color 0.3s, border-color 0.3s;
         }
 
         .filter-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            background-color: #f0f0f0; /* Fondo ligero al pasar el ratón */
         }
 
-        /* Estilos para el contenido de los filtros */
+        .filter-item.open .filter-btn {
+            border-color: #4caf50; /* Cambia el borde cuando está abierto */
+            background-color: #f9f9f9; /* Fondo claro cuando está abierto */
+        }
+
+        /* Estilo para el contenido del filtro */
         .filter-content {
-            background: white;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            background: transparent; /* Fondo transparente */
+            border: none; /* Sin borde */
+            border-bottom: 1px solid #ddd; /* Borde inferior */
+            box-shadow: none; /* Sin sombra */
             padding: 20px;
-            transition: opacity 0.3s ease-in-out;
-            opacity: 0;
-            transform: translateY(-10px);
-            transition: opacity 0.3s, transform 0.3s;
+            transition: opacity 0.3s ease-in-out, transform 0.3s;
         }
 
         .filter-item.open .filter-content {
-            opacity: 1;
-            transform: translateY(0);
+            border-bottom: 1px solid #4caf50; /* Cambia el borde cuando está abierto */
+            background: white; /* Fondo blanco cuando está abierto */
         }
-
-        /* Estilos personalizados para el botón de aplicar filtros */
-        .apply-filters-btn {
-            background: linear-gradient(135deg, #f09433 0%, #e6683c 50%, #dc2743 100%);
-            color: white;
-            padding: 12px;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-
-        .apply-filters-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 6px 12px rgba(    0, 0, 0, 0.2);
-        }
-
 
     </style>
-</head>
 <body class="bg-gray-100 p-6 font-sans leading-normal tracking-normal">
-
-    <!-- Formulario de Filtros -->
     <form id="filter-form" method="GET" action="productos" class="bg-white p-6 rounded-lg shadow-md">
         <div class="flex flex-wrap items-start gap-4">
             <!-- Contenedor de Filtros -->
@@ -157,10 +144,14 @@
                     </button>
                     <div class="filter-content bg-white border border-gray-300 rounded-lg p-4 shadow-lg mt-2">
                         <ul class="space-y-2">
-                            <li><label><input type="checkbox" name="marca[]" value="Fila" class="mr-2">Fila</label></li>
-                            <li><label><input type="checkbox" name="marca[]" value="Nike" class="mr-2">Nike</label></li>
-                            <li><label><input type="checkbox" name="marca[]" value="Adidas" class="mr-2">Adidas</label></li>
-                            <li><label><input type="checkbox" name="marca[]" value="Puma" class="mr-2">Puma</label></li>
+                            <?php foreach ($marcas as $marca): ?>
+                                <li>
+                                    <label>
+                                        <input type="checkbox" name="marca[]" value="<?php echo htmlspecialchars($marca['marca']); ?>" class="mr-2">
+                                        <?php echo htmlspecialchars($marca['marca']); ?>
+                                    </label>
+                                </li>
+                            <?php endforeach; ?>
                         </ul>
                     </div>
                 </div>
@@ -180,44 +171,46 @@
                 </div>
 
                  <!-- Filtro de Talla -->
-                <div class="relative flex-grow filter-item">
+                 <div class="relative flex-grow filter-item">
                     <button type="button" class="filter-btn bg-gray-200 text-gray-700 font-semibold py-2 px-4 rounded-md hover:bg-gray-300 transition-all w-full text-left" onclick="toggleFilter(this)">
                         Talla
                     </button>
                     <div class="filter-content bg-white border border-gray-300 rounded-lg p-4 shadow-lg mt-2">
                         <table id="tallas-table" class="w-full">
-                            <tr class="table-row">
-                                <td class="py-2 px-3">
-                                    <input type="checkbox" name="talla[]" value="36" class="tallas-checkbox">
-                                    36
-                                </td>
-                                <td class="py-2 px-3">
-                                    <input type="checkbox" name="talla[]" value="37" class="tallas-checkbox">
-                                    37
-                                </td>
-                                <td class="py-2 px-3">
-                                    <input type="checkbox" name="talla[]" value="38" class="tallas-checkbox">
-                                    38
-                                </td>
-                            </tr>
-                            <tr class="table-row">
-                                <td class="py-2 px-3">
-                                    <input type="checkbox" name="talla[]" value="39" class="tallas-checkbox">
-                                    39
-                                </td>
-                                <td class="py-2 px-3">
-                                    <input type="checkbox" name="talla[]" value="40" class="tallas-checkbox">
-                                    40
-                                </td>
-                                <td class="py-2 px-3">
-                                    <input type="checkbox" name="talla[]" value="41" class="tallas-checkbox">
-                                    41
-                                </td>
-                            </tr>
-                            <!-- Añade más filas según sea necesario -->
+                            <?php
+                            // Supongamos que $tallas es un array de tallas pasadas desde el controlador
+                            $num_columns = 4; // Número de columnas que deseas en la tabla
+                            $column_count = 0;
+
+                            foreach ($tallas as $talla) {
+                                if ($column_count % $num_columns == 0) {
+                                    if ($column_count > 0) {
+                                        echo '</tr>';
+                                    }
+                                    echo '<tr class="table-row">';
+                                }
+
+                                echo '<td class="py-2 px-3">';
+                                echo '<input type="checkbox" name="talla[]" value="' . htmlspecialchars($talla['talla']) . '" class="tallas-checkbox">';
+                                echo htmlspecialchars($talla['talla']);
+                                echo '</td>';
+
+                                $column_count++;
+                            }
+
+                            // Cierra la última fila si es necesario
+                            if ($column_count % $num_columns != 0) {
+                                while ($column_count % $num_columns != 0) {
+                                    echo '<td class="py-2 px-3"></td>';
+                                    $column_count++;
+                                }
+                                echo '</tr>';
+                            }
+                            ?>
                         </table>
                     </div>
                 </div>
+
 
 
                 <!-- Filtro de Color -->
@@ -227,8 +220,18 @@
                     </button>
                     <div class="filter-content bg-white border border-gray-300 rounded-lg p-4 shadow-lg mt-2">
                         <ul class="space-y-2">
-                            <li><label><input type="checkbox" name="color[]" value="Blanco" class="mr-2">Blanco</label></li>
-                            <li><label><input type="checkbox" name="color[]" value="Rosado" class="mr-2">Rosado</label></li>
+                            <?php if (!empty($colores)): ?>
+                                <?php foreach ($colores as $color): ?>
+                                    <li>
+                                        <label>
+                                            <input type="checkbox" name="color[]" value="<?php echo htmlspecialchars($color['color']); ?>" class="mr-2">
+                                            <?php echo htmlspecialchars($color['color']); ?>
+                                        </label>
+                                    </li>
+                                <?php endforeach; ?>
+                            <?php else: ?>
+                                <li>No hay colores disponibles.</li>
+                            <?php endif; ?>
                         </ul>
                     </div>
                 </div>
@@ -242,6 +245,8 @@
                         <ul class="space-y-2">
                             <li><label><input type="checkbox" name="descuento[]" value="5" class="mr-2">5%</label></li>
                             <li><label><input type="checkbox" name="descuento[]" value="10" class="mr-2">10%</label></li>
+                            <li><label><input type="checkbox" name="descuento[]" value="15" class="mr-2">15%</label></li>
+                            <li><label><input type="checkbox" name="descuento[]" value="20" class="mr-2">20%</label></li>
                         </ul>
                     </div>
                 </div>

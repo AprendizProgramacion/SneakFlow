@@ -1,5 +1,5 @@
         <footer>
-            <script src="/SneakFlow/public/vistas/js/script.js"></script>
+            <script src="/SneakFlow/public/vistas/js/general.js"></script>
         </footer>
     </body>
 </html>

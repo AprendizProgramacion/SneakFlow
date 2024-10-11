@@ -1,15 +1,11 @@
 <?php
-    require_once __DIR__ . '/../../app/seguridad/verificarSesion.php'; // Incluye el archivo de verificación
-
-    verificarSesionAdmin(); // Llama a la función de verificació
+    require_once '../public/vistas/header.php';
+    require_once __DIR__ . '/../../app/seguridad/verificarAdmin.php'; // Incluye la función de verificación
     
-    // Depura el contenido de la sesión
-    echo '<pre>';
-    print_r($_SESSION);
-    echo '</pre>';
+    verificarSesionAdmin(); // Llama a la función de verificación
 
-    // Verifica el rol del usuario
-    echo "Rol del usuario: " . $_SESSION['rol'];
 ?>
 
-<h1>Soy admin</h1>
+    <?php include 'alerta.php'; // Incluye el archivo de alerta ?>
+    <h1>Soy admin</h1>
+<?php require_once '../public/vistas/footer.php'; ?>

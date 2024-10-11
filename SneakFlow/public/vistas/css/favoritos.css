@@ -1,0 +1,132 @@
+body {
+    background: url('/SneakFlow/public/vistas/img/Adidas.jpg') no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'Roboto', sans-serif; /* Fuente Roboto para el cuerpo */
+    text-decoration: none; /* Quitar subrayado en botones y enlaces */
+}
+
+.card-container {
+    background: rgba(30, 30, 30, 0.8); /* Fondo más oscuro y semi-transparente */
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5), 0 0 15px rgba(0, 0, 0, 0.3); /* Sombra */
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    color: #f5f5f5; /* Texto blanco para contraste */
+}
+
+.card-container:hover {
+    transform: scale(1.03);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.6), 0 0 20px rgba(0, 0, 0, 0.4); /* Sombra más intensa al pasar el mouse */
+}
+
+.card-header {
+    background: rgba(20, 20, 20, 0.9); /* Fondo más oscuro y más semitransparente */
+    padding: 1rem;
+    text-align: center;
+}
+
+.card-header h5 {
+    font-size: 1.5rem;
+    color: #f5f5f5;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6); /* Sombra en el texto */
+    margin: 0; /* Quitar margen por defecto */
+}
+
+.card-content {
+    padding: 1rem;
+    background: rgba(50, 50, 50, 0.7); /* Fondo más oscuro y semitransparente */
+}
+
+.card-content p {
+    margin-bottom: 0.75rem;
+    font-size: 0.875rem;
+    color: #ddd; /* Color gris claro para el texto */
+}
+
+.card-content .price {
+    font-size: 1.125rem;
+    font-weight: bold;
+    color: #f5f5f5; /* Color blanco para el precio */
+}
+
+.card-footer {
+    padding: 0.75rem;
+    background: rgba(20, 20, 20, 0.9); /* Fondo más oscuro y más semitransparente */
+    text-align: center;
+}
+
+.card-footer .btn {
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+    text-decoration: none; /* Quitar subrayado en botones y enlaces */
+}
+
+.card-footer .btn-view {
+    background-color: #007bff;
+}
+
+.card-footer .btn-view:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+.card-footer .btn-delete {
+    background-color: #dc3545;
+}
+
+.card-footer .btn-delete:hover {
+    background-color: #c82333;
+    transform: scale(1.05);
+}
+
+.empty-cart {
+    background: rgba(30, 30, 30, 0.8); /* Fondo más oscuro y semi-transparente */
+    border-radius: 12px; /* Asegúrate de que el border-radius sea visible */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5), 0 0 15px rgba(0, 0, 0, 0.3); /* Sombra */
+    padding: 20px;
+    text-align: center;
+}
+
+.empty-cart img {
+    max-width: 180px;
+}
+
+.empty-cart h1 {
+    font-size: 1.75rem;
+    color: #fff;
+    margin-bottom: 15px;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6); /* Sombra en el texto */
+}
+
+.empty-cart p {
+    color: #ddd;
+    margin-bottom: 15px;
+    font-size: 1rem;
+}
+
+.empty-cart .btn-glow {
+    padding: 0.5rem 1.5rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #28a745;
+    transition: background 0.3s ease, transform 0.3s ease;
+    text-decoration: none; /* Quitar subrayado en botones */
+}
+
+.empty-cart .btn-glow:hover {
+    background-color: #218838;
+    transform: scale(1.05);
+}
+
+.custom-footer {
+    width: 600px; /* Aumenta el ancho del contenedor según tus necesidades */
+    margin: 0 auto; /* Opcional: centra el contenedor en su contenedor padre */
+    display: flex;
+    justify-content: center;
+    gap: 8px; /* Reduce el espacio entre los botones */
+}

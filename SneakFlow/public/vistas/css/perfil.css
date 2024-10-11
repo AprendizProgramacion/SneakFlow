@@ -1,134 +1,283 @@
+/* Estilo del cuerpo de la página */
 body {
-    font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background-color: #f4f4f4; /* Fondo de la página */
-    margin: 0;
+    background: url('/SneakFlow/public/vistas/img/5.jpeg') no-repeat center center fixed; /* Fondo fijo y centrado con una imagen */
+    background-size: cover; /* Asegura que la imagen de fondo cubra toda el área visible */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fuente de la página */
+    color: #f1f1f1; /* Color del texto en toda la página */
+    overflow-x: hidden; /* Evita el desplazamiento horizontal */
+    margin: 0; /* Elimina el margen predeterminado del body */
+    padding: 0; /* Elimina el padding predeterminado del body */
 }
 
-.card-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    padding: 20px;
-    background-color: #fff; /* Fondo blanco del contenedor principal */
-    border-radius: 8px; /* Bordes redondeados para el contenedor */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Sombra para resaltar el contenedor */
+/* Contenedor principal del perfil */
+.profile-container {
+    background: url('/SneakFlow/public/vistas/img/5.jpeg') no-repeat center center fixed; /* Fondo fijo y centrado con una imagen */
+    border-radius: 16px; /* Bordes redondeados */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5); /* Sombra para un efecto de profundidad */
+    padding: 2rem; /* Espaciado interno */
+    animation: fadeInContainer 1s ease-out; /* Animación para la aparición del contenedor */
+    position: relative; /* Necesario para las formas decorativas absolutas */
+    overflow: hidden; /* Oculta el contenido que se desborda */
+    backdrop-filter: blur(10px); /* Desenfoque del fondo para un efecto de vidrio esmerilado */
 }
 
-.card-header {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.card-body {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-.message {
-    margin-bottom: 20px;
-    font-size: 1.1em;
-    color: #555;
-}
-
-.profile-cards {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-.profile-card {
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 16px;
-    margin: 10px;
-    width: 300px;
-    text-align: center;
-    background-color: #fff; /* Fondo blanco para las tarjetas de perfil */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra sutil */
-}
-
-.profile-image {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-bottom: 10px;
-}
-
-.profile-card h3 {
-    margin: 10px 0;
-    font-size: 18px;
-}
-
-.description {
-    font-size: 14px;
-    color: #666;
-    margin-bottom: 10px;
-}
-
-.data {
-    font-size: 16px;
-    margin-bottom: 10px;
-    font-weight: bold;
-}
-
-.edit-button {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-.edit-button:hover {
-    background-color: #0056b3;
-}
-
-.edit-form {
-    margin-top: 10px;
-}
-
-.form-group {
-    text-align: left;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 5px;
-}
-
-.form-group input {
-    width: calc(100% - 20px);
-    padding: 8px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-.form-group button {
-    background-color: #28a745;
-    color: #fff;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-.form-group button:hover {
-    background-color: #218838;
-}
-
-/* Media Queries for Responsiveness */
-@media (max-width: 768px) {
-    .profile-card {
-        width: 100%;
-        margin: 10px 0;
+/* Animación de desvanecimiento del contenedor */
+@keyframes fadeInContainer {
+    from {
+        opacity: 0; /* Comienza invisible */
+        transform: translateY(20px); /* Comienza desde abajo */
     }
+    to {
+        opacity: 1; /* Termina visible */
+        transform: translateY(0); /* Termina en su posición original */
+    }
+}
+
+/* Tarjeta de perfil */
+.profile-card {
+    background: linear-gradient(145deg, #1e272e, #2f3640); /* Gradiente de fondo para la tarjeta */
+    border-radius: 12px; /* Bordes redondeados */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Sombra para un efecto de profundidad */
+    color: #f1f1f1; /* Color del texto en la tarjeta */
+    padding: 1.5rem; /* Espaciado interno */
+    position: relative; /* Necesario para las formas decorativas absolutas */
+    overflow: hidden; /* Oculta el contenido que se desborda */
+    border: 1px solid rgba(255, 255, 255, 0.5); /* Borde sutil */
+    animation: fadeInCard 0.7s ease-out; /* Animación para la aparición de la tarjeta */
+}
+
+/* Animación de desvanecimiento de la tarjeta */
+@keyframes fadeInCard {
+    from {
+        opacity: 0; /* Comienza invisible */
+        transform: translateY(10px); /* Comienza desde abajo */
+    }
+    to {
+        opacity: 1; /* Termina visible */
+        transform: translateY(0); /* Termina en su posición original */
+    }
+}
+
+/* Texto con borde */
+.text-bordered {
+    font-size: 2.5rem; /* Tamaño de fuente grande */
+    font-weight: bold; /* Negrita */
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5); /* Sombra del texto para un borde visual */
+}
+
+/* Estilo para los encabezados y párrafos dentro de la tarjeta de perfil */
+.profile-card h3, .profile-card p {
+    border: 1px solid rgba(255, 255, 255, 0.5); /* Borde sutil */
+    padding: 0.5rem; /* Espaciado interno */
+    border-radius: 8px; /* Bordes redondeados */
+    margin-bottom: 0.5rem; /* Espacio inferior */
+    backdrop-filter: blur(5px); /* Desenfoque del fondo para un efecto de vidrio esmerilado */
+    color: #f39c12; /* Color del texto dentro de la tarjeta */
+}
+
+/* Animación de desvanecimiento */
+.fade-in {
+    animation: fadeIn 0.5s ease-in-out; /* Animación de desvanecimiento */
+}
+
+/* Animación para el desvanecimiento */
+@keyframes fadeIn {
+    from {
+        opacity: 0; /* Comienza invisible */
+    }
+    to {
+        opacity: 1; /* Termina visible */
+    }
+}
+
+/* Estilo para el formulario de edición (oculto por defecto) */
+.edit-form {
+    display: none; /* Oculta el formulario */
+}
+
+/* Estilo general para los botones */
+.btn {
+    display: inline-flex; /* Flexbox para alinear el contenido */
+    align-items: center; /* Alinea verticalmente los elementos dentro del botón */
+    padding: 12px 24px; /* Espaciado interno */
+    border-radius: 8px; /* Bordes redondeados */
+    font-size: 14px; /* Tamaño de fuente */
+    font-weight: 700; /* Negrita */
+    text-align: center; /* Alineación del texto en el centro */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s; /* Transiciones para efectos de hover */
+    justify-content: center; /* Centra el contenido horizontalmente */
+    width: 100%; /* Ancho completo del contenedor padre */
+    margin-top: 1rem; /* Espacio superior */
+    position: relative; /* Necesario para el pseudo-elemento */
+    overflow: hidden; /* Oculta el contenido desbordado */
+    border: none; /* Elimina el borde predeterminado */
+}
+
+/* Efecto visual adicional para los botones */
+.btn::before {
+    content: ''; /* Pseudo-elemento vacío */
+    position: absolute; /* Posicionamiento absoluto */
+    top: -50%; /* Posición superior fuera del botón */
+    left: -50%; /* Posición izquierda fuera del botón */
+    width: 200%; /* Ancho expandido para el efecto */
+    height: 200%; /* Alto expandido para el efecto */
+    background: rgba(255, 255, 255, 0.1); /* Color de fondo semitransparente */
+    transform: rotate(45deg); /* Rotación del fondo */
+    transition: opacity 0.5s; /* Transición para el efecto de hover */
+    pointer-events: none; /* No afecta la interacción del mouse */
+}
+
+/* Efecto de hover para el pseudo-elemento del botón */
+.btn:hover::before {
+    opacity: 0; /* Hace que el pseudo-elemento sea invisible al pasar el mouse */
+}
+
+/* Estilo para el botón de edición */
+.btn-edit {
+    background-color: #1abc9c; /* Color de fondo */
+    color: white; /* Color del texto */
+    box-shadow: 0 4px 10px rgba(26, 188, 156, 0.5); /* Sombra para un efecto de profundidad */
+}
+
+/* Efectos de hover para el botón de edición */
+.btn-edit:hover {
+    background-color: #16a085; /* Color de fondo al pasar el mouse */
+    transform: translateY(-2px); /* Efecto de desplazamiento */
+    box-shadow: 0 6px 15px rgba(26, 188, 156, 0.8); /* Sombra más intensa */
+}
+
+/* Estilo para el botón de actualización */
+.btn-update {
+    background-color: #27ae60; /* Color de fondo */
+    color: white; /* Color del texto */
+    box-shadow: 0 4px 10px rgba(39, 174, 96, 0.5); /* Sombra para un efecto de profundidad */
+}
+
+/* Efectos de hover para el botón de actualización */
+.btn-update:hover {
+    background-color: #219150; /* Color de fondo al pasar el mouse */
+    transform: translateY(-2px); /* Efecto de desplazamiento */
+    box-shadow: 0 6px 15px rgba(39, 174, 96, 0.8); /* Sombra más intensa */
+}
+
+/* Estilo para el botón de cambio */
+.btn-change {
+    background-color: #e74c3c; /* Color de fondo */
+    color: white; /* Color del texto */
+    box-shadow: 0 4px 10px rgba(231, 76, 60, 0.5); /* Sombra para un efecto de profundidad */
+}
+
+/* Efectos de hover para el botón de cambio */
+.btn-change:hover {
+    background-color: #c0392b; /* Color de fondo al pasar el mouse */
+    transform: translateY(-2px); /* Efecto de desplazamiento */
+    box-shadow: 0 6px 15px rgba(231, 76, 60, 0.8); /* Sombra más intensa */
+}
+
+/* Espaciado para el icono en los botones */
+.btn i {
+    margin-right: 8px; /* Espacio a la derecha del icono */
+}
+
+/* Color del texto dentro de la tarjeta */
+.profile-card h3, .profile-card p {
+    margin: 0; /* Elimina el margen predeterminado */
+    color: #f39c12; /* Color del texto */
+}
+
+/* Estilo para los campos de entrada */
+.input-field {
+    border: 1px solid #ced4da; /* Borde de color gris claro */
+    border-radius: .375rem; /* Bordes redondeados */
+    padding: .5rem .75rem; /* Espaciado interno */
+    font-size: 1rem; /* Tamaño de fuente */
+    text-transform: none; /* Este valor asegura que no se aplique ninguna transformación */
+    transition: border-color 0.3s, box-shadow 0.3s; /* Transiciones para enfoque */
+    background: rgba(255, 255, 255, 0.1); /* Fondo semitransparente */
+    color: #f1f1f1; /* Color del texto */
+}
+
+/* Estilo para el enfoque en los campos de entrada */
+.input-field:focus {
+    border-color: #1abc9c; /* Color del borde al enfocarse */
+    box-shadow: 0 0 8px rgba(26, 188, 156, 0.5); /* Sombra para el enfoque */
+    outline: none; /* Elimina el borde de enfoque predeterminado */
+}
+
+/* Formas decorativas en el contenedor */
+.decorative-shape {
+    position: absolute; /* Posicionamiento absoluto */
+    border-radius: 50%; /* Forma circular */
+    background: rgba(255, 255, 255, 0.1); /* Fondo semitransparente */
+    width: 100px; /* Tamaño inicial */
+    height: 100px; /* Tamaño inicial */
+    top: -50px; /* Posición superior */
+    left: -50px; /* Posición izquierda */
+    z-index: 0; /* Detrás del contenido principal */
+    animation: floating 10s infinite ease-in-out; /* Animación de flotación */
+}
+
+/* Animación de flotación para las formas decorativas */
+@keyframes floating {
+    0%, 100% {
+        transform: translateY(0); /* Posición inicial y final */
+    }
+    50% {
+        transform: translateY(-20px); /* Desplazamiento hacia arriba */
+    }
+}
+
+/* Tamaño y posición de las formas decorativas pequeñas */
+.decorative-shape.small {
+    width: 60px; /* Tamaño pequeño */
+    height: 60px; /* Tamaño pequeño */
+    top: 20px; /* Posición superior */
+    right: 20px; /* Posición derecha */
+    animation-duration: 12s; /* Duración de la animación */
+}
+
+/* Tamaño y posición de las formas decorativas medianas */
+.decorative-shape.medium {
+    width: 80px; /* Tamaño mediano */
+    height: 80px; /* Tamaño mediano */
+    bottom: 20px; /* Posición inferior */
+    left: 20px; /* Posición izquierda */
+    animation-duration: 15s; /* Duración de la animación */
+}
+
+/* Tamaño y posición de las formas decorativas grandes */
+.decorative-shape.large {
+    width: 120px; /* Tamaño grande */
+    height: 120px; /* Tamaño grande */
+    bottom: -50px; /* Posición inferior */
+    right: -50px; /* Posición derecha */
+    animation-duration: 20s; /* Duración de la animación */
+}
+
+/* Estilo para la cabecera de la tarjeta */
+.card-header {
+    position: relative; /* Necesario para el pseudo-elemento */
+    z-index: 1; /* Asegura que el contenido de la cabecera esté por encima de los decorativos */
+}
+
+/* Efecto de superposición para la cabecera de la tarjeta */
+.card-header::after {
+    content: ''; /* Pseudo-elemento vacío */
+    position: absolute; /* Posicionamiento absoluto */
+    top: 0; /* Posición superior */
+    left: 0; /* Posición izquierda */
+    width: 100%; /* Ancho completo */
+    height: 100%; /* Alto completo */
+    background: rgba(0, 0, 0, 0.3); /* Fondo semitransparente oscuro */
+    border-radius: 12px; /* Bordes redondeados */
+    z-index: -1; /* Detrás del contenido de la cabecera */
+    transform: scale(1.05); /* Escala para el efecto de hover */
+    transition: opacity 0.3s, transform 0.3s; /* Transiciones para el efecto de hover */
+}
+
+/* Efecto de hover para la cabecera de la tarjeta */
+.card-header:hover::after {
+    opacity: 0; /* Hace el pseudo-elemento invisible */
+    transform: scale(1); /* Restaura la escala */
 }

@@ -8,7 +8,6 @@
 
 /* Cuerpo de la página */
 body {
-    height: 100vh;
     width: 100%;
     background: #000;
     display: flex;
@@ -18,7 +17,7 @@ body {
 
 /* Fondo de página */
 .background {
-    background: url(../img/Designer\ \(7\).jpeg) no-repeat center center;
+    background: url(../img/5.jpeg) no-repeat center center;
     background-size: cover;
     width: 100%;
     height: 100vh;

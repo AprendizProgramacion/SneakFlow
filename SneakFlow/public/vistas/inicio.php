@@ -1,2 +1,3 @@
+<?php require_once '../public/vistas/header.php'; ?>
 
-    <?php include_once 'footer.php'?>
+<?php require_once '../public/vistas/footer.php'; ?>

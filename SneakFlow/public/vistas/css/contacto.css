@@ -1,0 +1,129 @@
+body {
+    background-color: #0e0e0e; /* Fondo oscuro */
+    color: #fff; /* Texto blanco */
+    font-family: 'Quicksand', sans-serif;
+
+}
+
+.content {
+    max-width: 1200px;
+    margin: 40px auto; /* Aumenta el margen superior */
+    padding: 20px;
+    border-radius: 10px;
+    background: linear-gradient(145deg, #1b1b1b, #2a2a2a); /* Gradiente de fondo */
+    box-shadow: 20px 20px 60px #0b0b0b, -20px -20px 60px #3b3b3b; /* Sombra 3D */
+}
+
+.logo {
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.contact-wrapper {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.contact-form {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.1); /* Fondo semitransparente */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.contact-info {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+h3, h4 {
+    color: #ffcc00; /* Color dorado */
+    text-shadow: 2px 2px 5px #000;
+}
+
+label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    transition: background 0.3s;
+}
+
+input:focus, textarea:focus {
+    background: rgba(255, 255, 255, 0.4);
+    outline: none;
+}
+
+button {
+    background-color: #ffcc00;
+    color: #000;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: transform 0.3s, background 0.3s;
+}
+
+button:hover {
+    transform: scale(1.05);
+    background: #e6b800;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+ul li {
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+}
+
+ul li i {
+    margin-right: 10px;
+    color: #ffcc00;
+}
+
+.alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Alerta de éxito */
+.alert-success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+/* Alerta de error */
+.alert-danger {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* Añadir sombras para mayor visibilidad */
+.alert {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}

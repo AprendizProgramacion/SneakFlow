@@ -7,6 +7,8 @@ if (isset($_GET['token'])) {
         alert("El enlace de recuperación es inválido o ha expirado.");
         window.location = "recuperar";
     </script>';
+    require_once '../public/vistas/header.php'; 
+
 }
 ?>
 
@@ -28,3 +30,4 @@ if (isset($_GET['token'])) {
     </div>
 </div>
 
+<?php require_once '../public/vistas/footer.php'; ?>

@@ -1,6 +1,7 @@
 <?php
 
 require_once __DIR__ . '/../modelos/PerfilModelo.php'; // Incluye el modelo de perfil para interactuar con la base de datos
+session_start(); // Inicia la sesión al principio del archivo
 
 class PerfilControlador {
 
@@ -12,6 +13,7 @@ class PerfilControlador {
 
     // Muestra el perfil del usuario
     public function mostrarPerfil() {
+
         if (!isset($_SESSION['usuario'])) {
             // Si el usuario no está autenticado, redirige al login
             header("Location: login");

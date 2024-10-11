@@ -1,4 +1,5 @@
-        <?php include_once __DIR__ . '/../header.php';?>
+<?php require_once '../public/vistas/header.php'; ?>
+
         <link rel="stylesheet" href="/SneakFlow/public/vistas/css/login.css">
         <!-- LOGIN -->
         <div class="background"></div>
@@ -35,7 +36,7 @@
                         </div>
                         <div class="remember-password">
                             <label for=""><input type="checkbox">Recuerda</label>
-                            <a href="recuperar">Olvidaste tu contraseña</a>
+                            <a href="Recuperar_Contrasena">Olvidaste tu contraseña</a>
                         </div>
                         <button class="btn">Ingresar</button>
                         <div class="create-account">
@@ -75,5 +76,6 @@
                 </div>
             </div>
         </div>
-        <script src="/SneakFlow/public/vistas/js/login.js"></script>
-
+    
+    <script src="/SneakFlow/public/vistas/js/login.js"></script>
+<?php require_once '../public/vistas/footer.php'; ?>

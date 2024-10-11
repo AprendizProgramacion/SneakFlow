@@ -1,17 +1,18 @@
-
 /* Cabecera de la página */
 .header {
     position: fixed; /* Fija la cabecera en la parte superior de la página */
     top: 0;
     left: 0;
     width: 100%;
-    padding: 10px 13%;
+    padding: 10px 5%; /* Ajusta el padding para que se adapte mejor a diferentes tamaños de pantalla */
     background: rgba(0, 0, 0, 0.7); /* Fondo semi-transparente */
     display: flex;
     justify-content: space-between;
     align-items: center;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.7); /* Sombra */
     z-index: 1000; /* Asegura que la cabecera esté encima de otros elementos */
+    font-family: 'Arial', sans-serif;
+
 }
 
 /* Menú de navegación */
@@ -73,6 +74,56 @@
     color: #00ff4c; /* Cambio de color en hover */
 }
 
+/* Estilo del contenedor del ícono del carrito */
+.cart-icon-container {
+    position: relative;
+    display: flex; /* Asegura que el contenedor del carrito se alinee correctamente */
+    align-items: center; /* Alinea verticalmente el ícono del carrito */
+    margin: 0 15px;
+}
+
+/* Estilo del ícono del carrito */
+.cart-icon-container i {
+    font-size: 2rem; /* Ajusta el tamaño del ícono según sea necesario */
+    color: #fff; /* Color blanco por defecto */
+    transition: color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; /* Transiciones para cambios de color, animación y sombra */
+    margin-top: 5.5px; /* Margen superior de 1.5px */
+}
+
+/* Efecto hover para el ícono del carrito */
+.cart-icon-container i:hover {
+    color: #00ff4c; /* Color azul claro en hover */
+    transform: scale(1.1); /* Agrandar ligeramente el ícono en hover */
+}
+
+/* Cambia el color y agrega sombra cuando se activa la clase 'active' */
+.cart-icon-container.active i {
+    color: #00bfae; /* Verde esmeralda para el ícono del carrito */
+    box-shadow: 0 0 15px rgba(0, 191, 174, 0.6); /* Sombra verde esmeralda para iluminar el ícono */
+}
+
+.fav-icon-container i {
+    font-size: 2rem; /* Ajusta el tamaño del ícono según sea necesario */
+    color: #fff; /* Color blanco por defecto */
+    transition: color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; /* Transiciones para cambios de color, animación y sombra */
+    margin-top: 5.5px; /* Margen superior de 1.5px */
+}
+
+/* Efecto hover para el ícono del carrito */
+.fav-icon-container i:hover {
+    color: #00ff4c; /* Color azul claro en hover */
+    transform: scale(1.1); /* Agrandar ligeramente el ícono en hover */
+}
+
+/* Cambia el color y agrega sombra cuando se activa la clase 'active' */
+.fav-icon-container.active i {
+    color: #00bfae; /* Verde esmeralda para el ícono del carrito */
+    box-shadow: 0 0 15px rgba(0, 191, 174, 0.6); /* Sombra verde esmeralda para iluminar el ícono */
+}
+
+
+
+/* Barra de búsqueda */
 .header-icons .search-bar {
     width: 250px;
     height: 45px;
@@ -172,4 +223,109 @@
     background-color: #ffffff;
     color: #2e8b57;
 }
+#marcasDropdown {
+    border: 2px solid #ffffff; /* Borde blanco alrededor del contenedor */
+    border-top: none; /* Elimina el borde superior */
+    padding: 0.5rem; /* Espacio interno alrededor del contenido */
+    background: rgba(0, 0, 0, 0.7); /* Fondo semi-transparente */
+    transition: opacity 0.3s ease;
+    border-radius: 0.5rem; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Sombra para dar profundidad */
+    z-index: 1000; /* Asegura que el menú esté por encima de otros elementos */
+    width: 500px;
+}
 
+/* Estilos para los enlaces dentro del dropdown */
+#marcasDropdown a {
+    display: block;
+    text-align: center; /* Centrar el contenido dentro del enlace */
+    padding: 0.5rem; /* Espacio interno dentro de cada enlace */
+    border: 1px solid #ffffff; /* Borde blanco alrededor de cada enlace */
+    width: 80px;
+    border-radius: 0.5rem; /* Bordes redondeados */
+    transition: background-color 0.3s, border-color 0.3s; /* Transición suave para efectos */
+    margin-bottom: 0.5rem; /* Espacio entre los enlaces */
+}
+
+/* Eliminar borde en el último enlace */
+#marcasDropdown a:last-child {
+    border-bottom: none;
+}
+
+/* Estilo para las imágenes dentro de los enlaces */
+#marcasDropdown img {
+    display: block;
+    width: 80%; /* Ajusta el ancho de la imagen a un 80% del contenedor */
+    height: auto; /* Ajusta la altura automáticamente para mantener la proporción */
+    max-width: 10rem; /* Máximo ancho de la imagen para evitar desbordamientos */
+    margin: 0 auto; /* Centrar las imágenes dentro del enlace */
+    border: 2px solid transparent; /* Borde transparente por defecto */
+    transition: border-color 0.3s; /* Transición suave para el borde de la imagen */
+}
+
+/* Efectos de hover sobre el enlace */
+#marcasDropdown a:hover {
+    background-color: #2e2e2e; /* Fondo oscuro al pasar el ratón */
+    border-color: #ffffff; /* Borde blanco al pasar el ratón */
+}
+
+/* Efectos de hover sobre las imágenes */
+#marcasDropdown a:hover img {
+    border-color: #ffffff; /* Borde blanco alrededor de la imagen al pasar el ratón */
+}
+
+/* Estilo para el menú móvil */
+.mobile-menu {
+    position: absolute;
+    top: 60px; /* Ajusta según la altura de tu encabezado */
+    left: 0;
+    right: 0;
+    background-color: white; /* Cambia el color de fondo como prefieras */
+    border: 1px solid transparent;
+    z-index: 1000;
+}
+
+/* Estilo para los elementos del menú */
+.menu-item {
+    display: block;
+    padding: 10px 15px;
+    color: #333;
+    text-decoration: none;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+/* Cambiar el color de fondo y el borde al seleccionar */
+.menu-item:hover {
+    background-color: #4CAF50; /* Color verde al pasar el mouse */
+    color: white; /* Cambia el color del texto al seleccionar */
+    border-color: #4CAF50; /* Bordes verdes al seleccionar */
+}
+
+/* Estilo para el menú desplegable de marcas */
+.marcas-dropdown {
+    padding: 0;
+    background-color: white; /* Color de fondo del menú desplegable */
+    border: 1px solid #4CAF50; /* Borde verde */
+    border-radius: 4px;
+}
+
+/* Ocultar el menú por defecto */
+.hidden {
+    display: none;
+}
+
+/* Estilo para el ícono de hamburguesa */
+.hamburger {
+    display: none; /* Ocultarlo en pantallas grandes */
+    cursor: pointer;
+}
+
+/* Mostrar hamburguesa en pantallas pequeñas */
+@media (max-width: 768px) {
+    .navbar {
+        display: none; /* Ocultar el menú de navegación original en pantallas pequeñas */
+    }
+    .hamburger {
+        display: block; /* Mostrar el ícono de hamburguesa en pantallas pequeñas */
+    }
+}

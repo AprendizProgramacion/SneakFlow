@@ -1,99 +1,107 @@
-<?php
-require_once __DIR__ . '/../../app/controladores/PerfilControlador.php';
-
-$perfilControlador = new PerfilControlador();
-$perfilControlador->mostrarPerfil();
-?>
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perfil de Usuario</title>
+<?php require_once '../public/vistas/header.php'; ?>
     <link rel="stylesheet" href="/SneakFlow/public/vistas/css/perfil.css">
-</head>
-<body>
-    <?php if (isset($perfil)): ?>
-        <div class="card-container">
-            <!-- <h1><?php echo htmlspecialchars($perfil['id'])?></h1> -->
-            <div class="card">
-                <div class="card-header">
-                    <h1>Bienvenido <?php echo htmlspecialchars($perfil['usuario']); ?></h1>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css">
+  
+    <div class="container min-vh-100 d-flex justify-content-center align-items-center p-5">
+        <?php if (isset($perfil)): ?>
+            <div class="profile-container container mx-auto p-8 rounded-lg mt-4 max-w-4xl bg-white">
+                <div class="mb-4 text-center">
+                    <h1 class="text-4xl font-bold mb-2 text-bordered" style="color: white;">Bienvenido, <?php echo htmlspecialchars($perfil['usuario']); ?></h1>
+                    <p class="text-lg text-bordered" style="color: white;">Gestiona tu información personal.</p>
                 </div>
-                <div class="card-body">
-                    <p class="message">Gestiona tu información, la privacidad y la seguridad para mejorar tu experiencia en SneakFlow. Los cambios realizados se verán reflejados en tu perfil.</p>
+                
+                <div class="row g-4 position-relative">
+                    <!-- Figuras decorativas -->
+                    <div class="decorative-shape small"></div>
+                    <div class="decorative-shape medium"></div>
+                    <div class="decorative-shape large"></div>
+
+                    <!-- Usuario -->
+                    <div class="col-md-4">
+                        <div class="profile-card p-4 rounded-lg shadow-lg fade-in text-center">
+                            <div class="card-header" style="background-color: #343a40;">
+                                <h3 class="text-2xl font-semibold text-white mb-2">Usuario</h3>
+                                <p class="text-white font-bold mb-3"><?php echo htmlspecialchars($perfil['usuario']); ?></p>
+                                <button class="btn btn-edit" onclick="showEditForm('usuario')">
+                                    <i class="fas fa-edit"></i> Editar
+                                </button>
+                            </div>
+                            <div id="form-usuario" class="edit-form mt-3" style="display:none;">
+                                <form action="actualizarPerfil" method="POST">
+                                    <div class="mb-3">
+                                        <label for="usuario" class="form-label" style="color: white;">Nuevo Usuario:</label>
+                                        <input type="text" name="usuario" value="<?php echo htmlspecialchars($perfil['usuario']); ?>" class="form-control input-field" required>
+                                    </div>
+                                    <button type="submit" class="btn btn-update">
+                                        <i class="fas fa-save"></i> Actualizar
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Correo -->
+                    <div class="col-md-4">
+                        <div class="profile-card p-4 rounded-lg shadow-lg fade-in text-center">
+                            <div class="card-header" style="background-color: #343a40;">
+                                <h3 class="text-2xl font-semibold text-white mb-2">Correo</h3>
+                                <p class="text-white font-bold mb-3"><?php echo htmlspecialchars($perfil['correo']); ?></p>
+                                <button class="btn btn-edit" onclick="showEditForm('correo')">
+                                    <i class="fas fa-edit"></i> Editar
+                                </button>
+                            </div>
+                            <div id="form-correo" class="edit-form mt-3">
+                                <form action="actualizarPerfil" method="POST">
+                                    <div class="mb-3">
+                                        <label for="correo" class="form-label" style="color: white;">Nuevo Correo:</label>
+                                        <input type="email" name="correo" value="<?php echo htmlspecialchars($perfil['correo']); ?>" class="form-control input-field" required>
+                                    </div>
+                                    <button type="submit" class="btn btn-update">
+                                        <i class="fas fa-save"></i> Actualizar
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                     
-                    <div class="profile-cards">
-                        <div class="profile-card">
-                            <img src="../vistas/img/desi" alt="Imagen de Perfil" class="profile-image">
-                            <h3>Usuario</h3>
-                            <p class="description">Tu nombre de usuario en SneakFlow.</p>
-                            <p class="data" id="usuario-data"><?php echo htmlspecialchars($perfil['usuario']); ?></p>
-                            <button class="edit-button" onclick="showEditForm('usuario')">Editar</button>
-                            <div id="form-usuario" class="edit-form" style="display: none;">
-                                <form action="actualizarPerfil" method="POST">
-                                    <div class="form-group">
-                                        <label for="usuario">Usuario:</label>
-                                        <input type="text" name="usuario" value="<?php echo htmlspecialchars($perfil['usuario']); ?>" required>
-                                        <button type="submit">Actualizar</button>
-                                    </div>
-                                </form>
+                    <!-- Contraseña -->
+                    <div class="col-md-4">
+                        <div class="profile-card p-4 rounded-lg shadow-lg fade-in text-center">
+                            <div class="card-header" style="background-color: #343a40;">
+                                <h3 class="text-2xl font-semibold text-white mb-2">Contraseña</h3>
+                                <p class="text-white font-bold mb-3"><?php echo str_repeat('*', 12); ?></p>
+                                <button class="btn btn-change" onclick="showEditForm('contrasena')">
+                                    <i class="fas fa-lock"></i> Editar
+                                </button>
                             </div>
-                        </div>
-
-                        <div class="profile-card">
-                            <img src="path/to/email-image.jpg" alt="Imagen de Correo" class="profile-image">
-                            <h3>Correo</h3>
-                            <p class="description">Tu dirección de correo electrónico.</p>
-                            <p class="data" id="correo-data"><?php echo htmlspecialchars($perfil['correo']); ?></p>
-                            <button class="edit-button" onclick="showEditForm('correo')">Editar</button>
-                            <div id="form-correo" class="edit-form" style="display: none;">
+                            <div id="form-contrasena" class="edit-form mt-3">
                                 <form action="actualizarPerfil" method="POST">
-                                    <div class="form-group">
-                                        <label for="correo">Correo:</label>
-                                        <input type="email" name="correo" value="<?php echo htmlspecialchars($perfil['correo']); ?>" required>
-                                        <button type="submit">Actualizar</button>
+                                    <div class="mb-3">
+                                        <label for="contrasena" class="form-label" style="color: white;">Nueva Contraseña:</label>
+                                        <input type="password" name="contrasena" class="form-control input-field" required>
                                     </div>
-                                </form>
-                            </div>
-                        </div>
-
-                        <div class="profile-card">
-                            <img src="path/to/password-image.jpg" alt="Imagen de Contraseña" class="profile-image">
-                            <h3>Contraseña</h3>
-                            <p class="description">Tu contraseña actual.</p>
-                            <p class="data" id="contrasena-data"><?php echo str_repeat('*', 12); ?></p>
-                            <button class="edit-button" onclick="showEditForm('contrasena')">Editar</button>
-                            <div id="form-contrasena" class="edit-form" style="display: none;">
-                                <form action="actualizarPerfil" method="POST">
-                                    <div class="form-group">
-                                        <label for="contrasena">Nueva Contraseña:</label>
-                                        <input type="password" name="contrasena" required>
-                                        <button type="submit">Actualizar</button>
-                                    </div>
+                                    <button type="submit" class="btn btn-change">
+                                        <i class="fas fa-save"></i> Actualizar
+                                    </button>
                                 </form>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <script>
-        function showEditForm(field) {
-            var dataElement = document.getElementById(field + '-data');
-            var formElement = document.getElementById('form-' + field);
-            if (formElement.style.display === 'none') {
-                formElement.style.display = 'block';
-                dataElement.style.display = 'none';
-            } else {
-                formElement.style.display = 'none';
-                dataElement.style.display = 'block';
+            <script>
+            function showEditForm(field) {
+                var formElement = document.getElementById('form-' + field);
+                var isHidden = formElement.style.display === 'none';
+                formElement.style.display = isHidden ? 'block' : 'none';
             }
-        }
-        </script>
-    <?php else: ?>
-        <p>No se encontró información del perfil.</p>
-    <?php endif; ?>
-</body>
-</html>
+            </script>
+        <?php else: ?>
+            <div class="container mx-auto p-6 bg-white rounded-lg shadow-lg max-w-4xl">
+                <p class="text-center text-lg text-gray-600">No se encontró información del perfil.</p>
+            </div>
+        <?php endif; ?>
+    </div>
+<?php require_once '../public/vistas/footer.php'; ?>
